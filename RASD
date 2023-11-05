@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{titlesec}
+\usepackage{tabularx}
 \setcounter{secnumdepth}{4}
 
 \titleformat{\paragraph}
@@ -31,18 +32,18 @@ The purpose of this document is to outline the functionalities and requirements 
 
 
 \subsection{Scope}
-Nowadays the world of computer science is more than ever important and present in everyone's life: for this reason it's crucial for the teaching system to have the best
+Nowadays the world of computer science is more than ever important and present in everyone's life. For this reason, it's crucial for the teaching system to have the best
 possible means to lead the students to the best possible comprehension and governance of this subject. \\
 CodeKataBattle is a platform supposed to allow Educators to create coding tournaments in which students can compete, in teams or on their own, to improve their skills in any type of programming language.\\\\
-In order to ensure that the system allows Educators to manage all the settings and rules of the tournaments (number of battles, allowed Students' teams size, score assignment rules, proper programming language \dots), to which students can subscribe.\\
+In order to ensure that the system allows Educators to manage all the settings and rules of the tournaments (number of battles, allowed Students' team size, score assignment rules, proper programming language \dots), to which students can subscribe.\\
 All the Students logged into the app receive a notification each time a tournament has been created.\\
 Students involved in a tournament can create teams (according to the tournament's rules), and then it's time for them to start coding: through Git they will be allowed to receive the problem's text and to submit their solution, within a configured time range.\\
-The solutions will then be evaluated, by the system or the Educator, and will contribute to define the final rank of the tournament.\\\\
-Their stats in tournaments will be public and visible in the account of a student, as well as their achieved badges: a badge is a reward which is created by an Educator, who defines the requirement(s) to gain it: the badges can be assigned to one or more students and are relative to a single tournament, at the end of which they are eventually assigned.\\\\\\
+The solutions will then be evaluated, by the system or the Educator, and will contribute to defining the final rank of the tournament.\\\\
+Their stats in tournaments will be public and visible in the account of a student, as well as their achieved badges: a badge is a reward that is created by an Educator, who defines the requirement(s) to gain it: the badges can be assigned to one or more students and are relative to a single tournament, at the end of which they are eventually assigned.\\\\\\
 
 \subsection{Overview}
 \subsubsection{Goals}
-These are the goals that the system to be is supposed to achieve:\\\\
+These are the goals that the system is supposed to achieve:\\\\
 $[G1]$ Educators and students can subscribe to the application creating their personal account \\
 $[G2]$ Educators create Tournaments in which students can compete \\
 $[G3]$ Students subscribe to the tournaments \\
@@ -88,4 +89,59 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
             }
 
 \subsection{Definitions}
+\newpage
+\section{Requirements}
+\newpage
+\section{Alloy}
+\includegraphics[scale = 0.7]{Untitled-1.pdf}
+
+\section{Time Spent}
+\begin{center}
+\textbf{Armando Fiorini} \\
+\vspace{10px}
+    \begin{tabularx}{0.8\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline
+ \textbf{Chapter} & \textbf{Hours Spent} \\
+ \hline
+ 1 & TBD  \\
+ \hline
+ 2 & TBD \\
+ \hline
+\end{tabularx}
+
+\vspace{10px}
+\textbf{Samuele Motta} \\
+\vspace{10px}
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline
+ \textbf{Chapter} & \textbf{Hours Spent} \\
+ \hline
+ 1 & TBD  \\
+ \hline
+ 2 & TBD \\
+ \hline
+\end{tabularx}
+
+\vspace{10px}
+\textbf{Vajihe Gholami} \\
+\vspace{10px}
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+ \hline
+ \textbf{Chapter} & \textbf{Hours Spent} \\
+ \hline
+ 1 & TBD  \\
+ \hline
+ 2 & TBD \\
+ \hline
+\end{tabularx}
+
+\end{center}
+
+\section{References}
 \end{document}
