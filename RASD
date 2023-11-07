@@ -2,6 +2,7 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{titlesec}
 \usepackage{tabularx}
+\usepackage[none]{hyphenat}
 \setcounter{secnumdepth}{4}
 
 \titleformat{\paragraph}
@@ -22,9 +23,10 @@
 \textbf{Version:} 0.0.0\\
 \textbf{Date}: 18/10/2023\\
 \textbf{Download page}: https://github.com/ArmaFio/FioriniMottaGholami\\
-\tableofcontents
-
 \newpage
+\tableofcontents
+\newpage
+
 
 \section{Introduction}
 \subsection{Purpose}
@@ -39,7 +41,21 @@ In order to ensure that the system allows Educators to manage all the settings a
 All the Students logged into the app receive a notification each time a tournament has been created.\\
 Students involved in a tournament can create teams (according to the tournament's rules), and then it's time for them to start coding: through Git they will be allowed to receive the problem's text and to submit their solution, within a configured time range.\\
 The solutions will then be evaluated, by the system or the Educator, and will contribute to defining the final rank of the tournament.\\\\
-Their stats in tournaments will be public and visible in the account of a student, as well as their achieved badges: a badge is a reward that is created by an Educator, who defines the requirement(s) to gain it: the badges can be assigned to one or more students and are relative to a single tournament, at the end of which they are eventually assigned.\\\\\\
+Their stats in tournaments will be public and visible in the account of a student, as well as their achieved badges: a badge is a reward that is created by an Educator, who defines the requirement(s) to gain it: the badges can be assigned to one or more students and are relative to a single tournament, at the end of which they are eventually assigned.
+
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+
+\subsubsection{Acronyms}
+\begin{itemize}
+    \item \textbf{CKB}: CodeKataBattle
+    \item \textbf{RASD}: Requirement Analysis and Specification Document
+    \item \textbf{UI}: User Interface
+    \item \textbf{UML}: Unified Modelling Language
+\end{itemize}
+
+\subsubsection{Abbreviations}
 
 \subsection{Overview}
 \subsubsection{Goals}
@@ -88,14 +104,42 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
 
             }
 
-\subsection{Definitions}
 \newpage
-\section{Requirements}
+
+\section{Overall Description}
+
+\subsection{Assumptions, dependencies and constraints}
+
+\subsubsection{Domain Assumptions}
+The following are the domain assumptions that need to be satisfied for the correct behaviour of CKB. Since those situations are out of the control of the system, they are taken as granted.\\\\
+$[D1]$ User must have an internet connection.\\
+$[D2]$ User must have a GitHub account.\\
+$[D3]$ User must be able to push on GitHub by itself.\\
+$[D4]$ Connection between systems must be reliable.\\
+
+\section{Specific Requirements}
+
+\subsection{User Interfaces}
+In this section is presented the user interface through which both students and educators can:
+\begin{itemize}
+    \item Log in
+    \item Sign Up
+    \item Access personal dashboard
+\end{itemize}
+The needs of educators and students are not the same, therefore they are going to get access to different views:\\
+Educators have access to specific views that allow them to create tournaments and battles, moreover, the creator of the tournament can grant access to other educators so that they can create their own battles within the tournament access has been granted for.\\
+An user can be both student and educator: those users will be provided with a switch button available in the dashboard so that they can switch between the two profiles.
+\begin{center}
+    \textbf{ADD IMAGES HERE}\\
+\end{center}
+
+
 \newpage
+
 \section{Alloy}
 \includegraphics[scale = 0.7]{Untitled-1.pdf}
 
-\section{Time Spent}
+\section{Effort Spent}
 \begin{center}
 \textbf{Armando Fiorini} \\
 \vspace{10px}
