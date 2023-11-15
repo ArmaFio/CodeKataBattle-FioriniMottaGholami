@@ -43,8 +43,9 @@ Students involved in a tournament can create teams (according to the tournament'
 The solutions will then be evaluated, by the system or the Educator, and will contribute to defining the final rank of the tournament.\\\\
 Their stats in tournaments will be public and visible in the account of a student, as well as their achieved badges: a badge is a reward that is created by an Educator, who defines the requirement(s) to gain it: the badges can be assigned to one or more students and are relative to a single tournament, at the end of which they are eventually assigned.
 
-\subsection{Definitions, Acronyms, Abbreviations\\} 
-\subsubsection{Definitions\\}
+
+\subsection{Definitions, Acronyms, Abbreviations\\ } 
+\subsubsection{Definitions\\ }
 \textbf{Educator:} user who signs up to use the system as a mean to improve the programming skills of his students, he can create Tournaments
 and badges.\\\\
 \textbf{\\Student:} user who signs up to improve their skills, participating to tournaments which are created by the educators. \\\\\\
@@ -90,8 +91,10 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
             \paragraph{World Phenomena}
             $[W1]$ User downloads the application\\
             $[W2]$ An Educator decides in class to use the application to organize a coding tournament\\
-            $[W3]$ A Student decides to join a battle\\
-            $[W4]$ A Student contacts some mates to form a team
+            ${W3}$ An Educator wants to start a new battle in a tournament they have created \\
+            $[W4]$ A Student 
+            $[W4]$ A Student decides to join a battle\\
+            $[W5]$ A Student contacts some mates to form a team
 
             \paragraph{Shared Phenomena}
             \textbf{Controlled by the world and observed by the machine} \\\\
@@ -113,6 +116,49 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
 \newpage
 
 \section{Overall Description}
+\subsection{Product Perspective}
+\subsubsection{Scenarios}
+\begin{enumerate}
+  \item \textbf{An Educator creates a tournament\\}An Educator wants to create a coding tournament to make his students train their
+  coding skills: he signs in into the system and he clicks on the "My Tournaments" button on his home page, then he clicks on "Create new Tournament":
+  at this point the Educator can set the name of the tournament the list of collaborators (Colleagues that can create battles in the context of that tournament) and a subscription
+  deadline for the tudents who want to join the tournament, after that time the subscription will be closed and the tournament will result as started.\\
+  When he clicks on confirm the tournament has finally been created: now all the students will be notified and can join it.\\
+  \item \textbf{An Educator creates a battle\\}An Educator wants to create a new battle for the tournament: once he has signed in he can go in to "My Tournaments" section
+  and select a started tournament.\\
+  If the tournament has no ongoing battles the function "Create new battle" is enabled: the Educator can then manage the battle settings.
+  In particular he has to configure:
+  \begin{itemize}
+    \item The programming language(s) students are allowed to use for coding that the evaluating system will recognize
+    \item The maximum number of students for each team that will compete in the battle
+    \item The registration deadline for the battle
+    \item The submission deadline for the solutions
+    \item The evaluation system options (Totally automated, manual checking)
+  \end{itemize}
+  He has finally to submit the text of the problem for the battle: it will be automatically uploaded in a repo created by the system at the registration
+  deadline and the students will be automatically given the link to see it and start coding.\\
+  \newpage
+  \item \textbf{An Educator creates a Badge\\}An Educator wants to create a gamification badge: badges exist in the context of a tournament, so the Educator clicks on an ongoing tournament
+  in "My Tournaments" section and then on "Create a Badge".\\
+  Once reached this section the Educator is shown the list of parameters offered by the system which represent properties regarding which conditions can be built, including values of commits number, code length, code speed, joined battles
+  and so on; he also writes a brief description of the requirement in the dedicated section.
+  Once the conditions are written the Educator uploads an image for the badge and gives it a name, and eventually clicks on "confirm": now the badge is avaiable for all students of that tournament.\\
+  \item \textbf{A Students joins a tournament\\} Mark has been notified that a new tournament has been created and wants to join it: he can click on the notification, that will redirect him directly on the tournament page, or search for it by himself clicking on "Join a Tournament" in "My Tournaments"
+  section of his homepage. 
+  Once he has found the tournament he clicks join and he's in: he can now see the list of the incoming battles to join them on his own or with his team.\\
+  \item \textbf{A Students joins a battle\\} Mark has seen that a battle is starting in a tournament he has joined and has decided to join it with 2 friends, that have also subscribed to the tournament.\\
+  He selects the tournament from him ones list and then selects the battle: he can then see his team for the battle, to which he can invite people who has subsribed to the tournament pushing the '+' button, and a confirmation button.\\
+  He invites his 2 friends selecting them from a list containing the subscribers and after some time he receives a notification that the invites have been accepted: in that moment he comes back to the battle page and sees his friend's name 
+  appeared in his team: now he clicks on confirm and the registraton is confirmed, they have to wait for the beginning of the battle.
+  \newpage 
+  \item \textbf{A Student achieves a badge\\} Paul is competing in a tournament, last battle of which has just ended: since the Educator who has created the tournament defined a badge for the team 
+  having committing the biggest number of times, the system verifies that condition and Paul is resulting as the gainer of the badge.\\
+  The system then sends a notification to him: when he sees it he goes to his profile homepage and in "My Badges" section he sees the new badge he has achieved.\\
+  Eventually, clicking on it, he can see the information about the badge, including the description of the requirement from which he is now able to know
+  how he has gain the achievement.
+
+
+\end{enumerate}
 
 \subsection{Assumptions, dependencies and constraints}
 
@@ -141,19 +187,19 @@ An user can be both student and educator: those users will be provided with a sw
 
 \subsection{Requirements}
 \subsubsection{Functional Requirments}
-$[FR1]$ The system allows Users (Students and Educators) to sign up
-$[FR2]$ The system allows Users to (Students and Educators) to login
-$[FR3]$ The system allows Educators to create tournaments
-$[FR4]$ The system allows Educators to set the maximumn number of students per team in a tournament
-$[FR5]$ The system allows Educators to set the number of battles in a tournament
-$[FR6]$ The system allows Educators to create battles
-$[FR7]$ The system allows Educators to choose whether and when the scores will be assigned automatically by the system or manually by themselves.
-$[FR8]$ The system allows Educstors to create badges for a specific tournament
-$[FR9]$ The system allows Educators to state the requirements for achieveing a badge
-$[FR10]$ The system allows Users to join a tournament
-$[FR11]$ The system allows Users to see the ranking in tournaments and achieved badges of every signed up student in the system.
-$[FR12]$ The system allows Educators to see the list of the active tournaments they have created
-$[FR13]$ The system allows Users to see the list of the active tournaments they have joined
+$[FR1]$ The system allows Users (Students and Educators) to sign up\\
+$[FR2]$ The system allows Users to (Students and Educators) to login\\
+$[FR3]$ The system allows Educators to create tournaments\\
+$[FR4]$ The system allows Educators to set the maximumn number of students per team in a tournament\\
+$[FR5]$ The system allows Educators to set the number of battles in a tournament\\
+$[FR6]$ The system allows Educators to create battles\\
+$[FR7]$ The system allows Educators to choose whether and when the scores will be assigned automatically by the system or manually by themselves.\\
+$[FR8]$ The system allows Educstors to create badges for a specific tournament\\
+$[FR9]$ The system allows Educators to state the requirements for achieveing a badge\\
+$[FR10]$ The system allows Users to join a tournament\\
+$[FR11]$ The system allows Users to see the ranking in tournaments and achieved badges of every signed up student in the system.\\
+$[FR12]$ The system allows Educators to see the list of the active tournaments they have created\\
+$[FR13]$ The system allows Users to see the list of the active tournaments they have joined\\
 $[FR14]$ 
 
 \newpage
