@@ -80,18 +80,6 @@ $[G3]$ Students subscribe to the tournaments \\
 $[G4]$ Students compete, in teams or on their own, in many battles, the results of which will determine the final rank of the tournament  \\
 $[G5]$ Students can reach achievements that permit them to gain badges for their account \\
 $[G6]$ Educators create badges and define requirements to achieve them \\
-\begin{itemize}
-\item Skill Enhancement: Users, primarily students, want to improve their software development skills by actively participating in coding battles and honing their problem-solving abilities. 
-
-\item Collaboration: Students aspire to collaborate with their peers to solve coding challenges as a team. This encourages cooperative learning and effective communication among team members.
-
-\item Competition and Ranking: Users, including educators and students, desire a competitive element in software development exercises. They aim to compete with others and achieve high rankings based on their coding prowess.
-
-\item Educational Engagement: Educators intend to create engaging and effective teaching environments, using code kata battles to educate and mentor their students in a practical and enjoyable manner.
-
-\item Automated Assessment: All users seek an automated and objective method for assessing and scoring coding solutions. This provides fair and efficient evaluation, particularly in cases where a large number of students and teams are involved.
-
-\end{itemize}
 \newpage
       \subsubsection{Phenomena}
         {\setlength{\leftskip}{2em}
@@ -128,7 +116,7 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
 \begin{enumerate}
   \item \textbf{An Educator creates a tournament\\}John wants to create a coding tournament to make his students train their
   coding skills: he signs in into the system and he clicks on the "My Tournaments" button on his home page, then he clicks on "Create new Tournament":
-  at this point the Educator can set the name of the tournament the list of collaborators (Colleagues that can create battles in the context of that tournament) and a subscription
+  at this point he can set the name of the tournament the list of collaborators (Colleagues that can create battles in the context of that tournament) and a subscription
   deadline for the students who want to join the tournament, after that time the subscription will be closed and the tournament will result as started.\\
   When he clicks on confirm the tournament has finally been created: now all the students will be notified and can join it.\\
   \item \textbf{An Educator creates a battle\\}An Educator wants to create a new battle for the tournament: once he has signed in he can go in to "My Tournaments" section
@@ -176,7 +164,8 @@ The inserted e-mail will be verified from the system with a confirmation e-mail 
 Once this step is done the user will have to insert their personal data: Name, Surname, an username that will be the one who will be seen by the other users, and the type of user (Educator or Student).
 \subsubsection{Tournament creation}
 Each Educator can use the system to create tournaments for single students or for teams: in the single player tournaments, if the Educator enables the option, the students can form teams for a single battle, the score of which will be added to the single score of each component.\\
-When creating a tournament an Educator has to set the list of available programming languages, the number of battles and to give it a name, they can in addition choose to set it as private protecting it with an alphanumerical access key.
+When creating a tournament an Educator has to set the list of available programming languages, the number of battles and to give it a name, they can in addition choose to set it as private protecting it with an alphanumerical access key.\\
+The tournaments can also been handled by more than one Educator: collaborators can be added from creation pages.
 In case of teams tournaments the educator will be asked to choose the maximum number of Students per team.
 Once an Educator has created a tournament every user in the system is notified and can join it.
 The creator has to set a subscription deadline: as the deadline expires the tournament status passes from opened to ongoing and no one can join it anymore.
@@ -192,29 +181,36 @@ Once all this has been done the Educator confirms the creation of the battle: al
 Each student subscribed to a tournament can join its battles: they receive a notification every time a new battle is ready to start and they have time to join it until the deadline set by the Educator has expired.\\
 If the tournament is for single players, the educator can allow students to create teams in the context of each single battle: the team components will be assigned the same score but in the tournament ranking they will still be considered as separate challengers; the team will be dissolved as the battle ends.\\
 As the deadline for subscribing expires each competing student will be allowed to see the link of the repository where they will find the text of the exercise with test cases and will upload their solution.
+\newpage
 \subsubsection{Code Evaluation}
 The System, during a battle, will use static code analysis tools (such as Pylint) to give a score to each competitor: the score is assigned each time a solution is pushed on the gitHub repository so that a live provisional rank is always visible for all the duration of the battle to all the Students involved. 
 When the battle ends, and after the eventual manual evaluation by the Educator, Students will be able to see the final scores of all the competitors in the rank of the battle, and also the updated tournament rank.\\
-The score is a number from 0 to 100, determined basing on criteria like correctness but also time and space efficiency.
+The score is a number from 0 to 100, determined basing on criteria like correctness but also time and space efficiency and so on.
 \subsubsection{Gamification Badges}
 
 \subsubsection{Stats and Rankings}
 
 
-
+\subsection{User Characteristics}
+The system is designed to interact with the following two different kinds of users:
+\subsubsection{Educator}
+An educator is an user who registered through the CKB app by creating an "educator account", it is able to create tournaments and battles, inviting collaborators in the tournament, evaluate the solutions provided by the students and create badges for each tournament (optional).
+\subsubsection{Student}
+A student is an user who registered through the CKB app by creating a "student account", it is able to join tournaments and battles, invite other students in their current team and submit solutions for the battles in which it joined.
 \subsection{Assumptions, dependencies and constraints}
 
 \subsubsection{Domain Assumptions}
 The following are the domain assumptions that need to be satisfied for the correct behaviour of CKB. Since those situations are out of the control of the system, they are taken as granted.\\\\
 $[D1]$ User must have an internet connection.\\
 $[D2]$ User must have a GitHub account.\\
-$[D3]$ User must be able to push on GitHub by itself.\\
+$[D3]$ User must know how to use GitHub in the proper way (push, pull, branch, etc.).\\
 $[D4]$ Connection between systems must be reliable.\\
 $[D5]$ Test cases provided by educators must be correct.\\
 $[D6]$ GitHub works as expected.\\
-\newpage
+
 \section{Specific Requirements}
-\subsection{User Interfaces}
+\subsection{External Interface Requirements}
+\subsubsection{User Interfaces}
 In this section is presented the user interface through which both students and educators can:
 \begin{itemize}
     \item Log in
@@ -222,9 +218,8 @@ In this section is presented the user interface through which both students and 
     \item Access personal dashboard
 \end{itemize}
 The needs of educators and students are not the same, therefore they are going to get access to different views:\\
-Educators have access to specific views that allow them to create tournaments and battles, moreover, the creator of the tournamening created.
-Once the first step is done the user will have to t can grant access to other educators so that they can create their own battles within the tournament access has been granted for.\\
-An user can be both student and educator: those users will be provided with a switch button available in the dashboard so that they can switch between the two profiles.\\
+Educators have access to specific views that allow them to handle tournaments and battles while students must be able to join tournaments and battles, as well as invite members in their group.
+
 
 
 \begin{figure}
@@ -233,15 +228,22 @@ An user can be both student and educator: those users will be provided with a sw
     \caption{User Interface}
 \end{figure}
 \newpage
-\subsection{Requirements}
-\subsubsection{Functional Requirements}
+\subsubsection{Hardware Interfaces}
+
+The system offers to the users different services (see paragraph \textbf{2.2}) that can be accessed by any device with an internet connection whether it's through app or web app.
+                            
+\subsubsection{Software Interfaces}
+
+
+
+\subsection{Functional Requirements}
 $[FR1]$ The system allows Users (Students and Educators) to sign up.\\
 $[FR2]$ The system allows Users (Students and Educators) to login.\\
 $[FR3]$ The system allows Educators to create tournaments.\\
 $[FR4]$ The system allows Educators to set the maximum number of students per team in a tournament.\\
 $[FR5]$ The system allows Educators to set the number of battles in a tournament.\\
 $[FR6]$ The system allows Educators to create battles.\\
-$[FR7]$ The system allows Educators to choose whether and when the scores will be assigned in a totally automatic way or also through a manual verification by himself\\
+$[FR7]$ The system allows Educators to choose whether and when the scores will be assigned in a totally automatic way or also through a manual verification by themselves\\
 $[FR8]$ The system allows Educators to create badges for a specific tournament.\\
 $[FR9]$ The system allows Educators to state the requirements for achieving a badge.\\
 $[FR10]$ The system allows Users to join a tournament.\\
@@ -268,6 +270,10 @@ $[FR13]$ The system allows Users to see the list of the active tournaments they 
  \hline
  2 & TBD \\
  \hline
+ 3 & TBD \\
+ \hline
+ 4 & TBD \\
+ \hline
 \end{tabularx}
 
 \vspace{10px}
@@ -283,6 +289,10 @@ $[FR13]$ The system allows Users to see the list of the active tournaments they 
  \hline
  2 & TBD \\
  \hline
+ 3 & TBD \\
+ \hline
+ 4 & TBD \\
+ \hline
 \end{tabularx}
 
 \vspace{10px}
@@ -297,6 +307,10 @@ $[FR13]$ The system allows Users to see the list of the active tournaments they 
  1 & TBD  \\
  \hline
  2 & TBD \\
+ \hline
+ 3 & TBD \\
+ \hline
+ 4 & TBD \\
  \hline
 \end{tabularx}
 
