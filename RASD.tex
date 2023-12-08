@@ -2,6 +2,11 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{titlesec}
 \usepackage{tabularx}
+\usepackage{makecell} 
+\usepackage{array} 
+\usepackage{enumitem}
+\usepackage{changepage}  
+\usepackage{geometry}
 \usepackage[none]{hyphenat}
 \setcounter{secnumdepth}{4}
 
@@ -77,18 +82,20 @@ These are the goals that the system is supposed to achieve:\\\\
 $[G1]$ Educators and students can subscribe to the application creating their personal account \\
 $[G2]$ Educators create Tournaments in which students can compete \\
 $[G3]$ Students subscribe to the tournaments \\
-$[G4]$ Students compete, in teams or on their own, in many battles, the results of which will determine the final rank of the tournament  \\
-$[G5]$ Students can reach achievements that permit them to gain badges for their account \\
-$[G6]$ Educators create badges and define requirements to achieve them \\
+$[G4]$ Educators create Battles in the context of a tournament, consisting in coding challenges for students\\
+$[G5]$ Students compete, in teams or on their own, in many battles, the results of which will determine the final rank of the tournament  \\
+$[G6]$ Educators create badges and define requirements to achieve them\\
+$[G7]$ Students can reach achievements that permit them to gain badges for their account\\
+$[G8]$ Users can visit the account of each other as part of a community, their stats and achieved badges are public.
 \newpage
       \subsubsection{Phenomena}
-        {\setlength{\leftskip}{2em}
             \paragraph{World Phenomena}
             $[W1]$ User downloads the application\\
             $[W2]$ An Educator decides in class to use the application to organize a coding tournament\\
             $[W3]$ A Student decides to join a battle\\
             $[W4]$ A Student contacts some mates to form a team\\
             $[W5]$ A Student pushes a solution on GitHub\\
+            $[w6]$ A Students forks the CK repository on GitHub
 
             \paragraph{Shared Phenomena}
             \textbf{Controlled by the world and observed by the machine} \\\\
@@ -106,7 +113,7 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
             $[SM3]$ A Student is shown he has achieved a badge\\
             $[SM4]$ A User is shown his account or another one's, with all the badges and stats\\
             $[SM5]$ The system evaluates a solution submitted by a student and gives them the score
-            }
+
 
 \newpage
 
@@ -119,7 +126,7 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
   at this point he can set the name of the tournament the list of collaborators (Colleagues that can create battles in the context of that tournament) and a subscription
   deadline for the students who want to join the tournament, after that time the subscription will be closed and the tournament will result as started.\\
   When he clicks on confirm the tournament has finally been created: now all the students will be notified and can join it.\\
-  \item \textbf{An Educator creates a battle\\}An Educator wants to create a new battle for the tournament: once he has signed in he can go in to "My Tournaments" section
+  \item \textbf{An Educator creates a battle\\}James wants to create a new battle for the tournament: once he has signed in he can go in to "My Tournaments" section
   and select a started tournament.\\
   If the tournament has no ongoing battles the function "Create new battle" is enabled: the Educator can then manage the battle settings.
   In particular he has to configure:
@@ -141,7 +148,7 @@ $[G6]$ Educators create badges and define requirements to achieve them \\
   \item \textbf{A Students joins a tournament\\} Mark has been notified that a new tournament has been created and wants to join it: he can click on the notification, that will redirect him directly on the tournament page, or search for it by himself clicking on "Join a Tournament" in "My Tournaments"
   section of his homepage. 
   Once he has found the tournament he clicks join and he's in: he can now see the list of the incoming battles to join them on his own or with his team.\\
-  \item \textbf{A Students joins a battle\\} Mark has seen that a battle is starting in a tournament he has joined and has decided to join it with 2 friends, that have also subscribed to the tournament.\\
+  \item \textbf{A Students joins a battle\\} Jim has seen that a battle is starting in a tournament he has joined and has decided to join it with 2 friends, that have also subscribed to the tournament.\\
   He selects the tournament from him ones list and then selects the battle: he can then see his team for the battle, to which he can invite people who has subscribed to the tournament pushing the '+' button, and a confirmation button.\\
   He invites his 2 friends selecting them from a list containing the subscribers and after some time he receives a notification that the invites have been accepted: in that moment he comes back to the battle page and sees his friend's name 
   appeared in his team: now he clicks on confirm and the registration is confirmed, they have to wait for the beginning of the battle.
@@ -163,31 +170,30 @@ These function will be available to all the users: during the sign up procedure 
 The inserted e-mail will be verified from the system with a confirmation e-mail sent to the user.\\
 Once this step is done the user will have to insert their personal data: Name, Surname, an username that will be the one who will be seen by the other users, and the type of user (Educator or Student).
 \subsubsection{Tournament creation}
-Each Educator can use the system to create tournaments for single students or for teams: in the single player tournaments, if the Educator enables the option, the students can form teams for a single battle, the score of which will be added to the single score of each component.\\
+Each Educator can use the system to create tournament for Students, that will compete singularly in them.
 When creating a tournament an Educator has to set the list of available programming languages, the number of battles and to give it a name, they can in addition choose to set it as private protecting it with an alphanumerical access key.\\
-The tournaments can also been handled by more than one Educator: collaborators can be added from creation pages.
-In case of teams tournaments the educator will be asked to choose the maximum number of Students per team.
+The tournaments can also been handled by more than one Educator: collaborators can be added from creation page, they can create battles and manually evaluate the solutions provided by the Students, if needed, but they cannot create badges.
 Once an Educator has created a tournament every user in the system is notified and can join it.
 The creator has to set a subscription deadline: as the deadline expires the tournament status passes from opened to ongoing and no one can join it anymore.
 \subsubsection{Tournament subscription}
 Each student can subscribe to a tournament: once they have found a tournament in which they want to compete, exploring the list or searching it in there by name or creator, they can click and join it, inserting the access key if it's required. 
 In case of teams tournaments Students will have to build their teams since the beginning: they can so invite whoever they want to subscribe to the tournament and join their team; when the team is ready the team leader can confirm the registration and the game is done.
 \subsubsection{Battle creation}
-In the context of an ongoing tournament Educators have to set the options of each battle before making it start: if the tournament is for single players and team battles are enabled the Educator has to choose the maximum team size in that battle, the language(s) for that specific battle picked from the tournament's ones, and to set the subscription and solution submission deadline.
+In the context of an ongoing tournament Educators have to set the options of each battle before making it start: they have to choose the maximum team size in that battle, the language(s) for that specific battle picked from the tournament's ones, and to set the subscription and solution submission deadline.
 He has also to decide if the solutions will be evaluated totally by the system or if he also wants to manually check the solutions at the end of the battle.
-After having done that the Educator has to upload on the app the text and test cases for the problem that the Students have to solve in that battle: when the battle begins a public repository containing the text will be created on GitHub and made available to all Students involved in the battle
+After having done that the Educator has to upload on the app the text and test cases for the problem that the Students have to solve in that battle: when the Educator confirms the creation of a battle a repository containing the uploaded files will be created on GitHub; it will be made available to all Students involved in the battle when the deadline expires.
 Once all this has been done the Educator confirms the creation of the battle: all the Students that are subscribed to the tournament are notified and the timer for the registration starts.
 \subsubsection{Battle joining}
 Each student subscribed to a tournament can join its battles: they receive a notification every time a new battle is ready to start and they have time to join it until the deadline set by the Educator has expired.\\
-If the tournament is for single players, the educator can allow students to create teams in the context of each single battle: the team components will be assigned the same score but in the tournament ranking they will still be considered as separate challengers; the team will be dissolved as the battle ends.\\
-As the deadline for subscribing expires each competing student will be allowed to see the link of the repository where they will find the text of the exercise with test cases and will upload their solution.
+As the deadline for subscribing expires each competing student will be allowed to see the link of the repository where they will find the text of the exercise and the test cases that the educator uploaded: each team has to fork the repository and paste the link of his copy in an apposite form in the app so that the System can visit the repository and check the solutions when it's needed.
 \newpage
 \subsubsection{Code Evaluation}
 The System, during a battle, will use static code analysis tools (such as Pylint) to give a score to each competitor: the score is assigned each time a solution is pushed on the gitHub repository so that a live provisional rank is always visible for all the duration of the battle to all the Students involved. 
 When the battle ends, and after the eventual manual evaluation by the Educator, Students will be able to see the final scores of all the competitors in the rank of the battle, and also the updated tournament rank.\\
 The score is a number from 0 to 100, determined basing on criteria like correctness but also time and space efficiency and so on.
+If the manual evaluation is disabled for the battle the score will be entirely assigned by the System, otherwise it will assign at maximum only a part of the available 100 points, to which it will be summed the other part of the score that will be assigned from Educator.
 \subsubsection{Gamification Badges}
-Educators are allowed, in the context of a tournament, to create Gamification Badges.\\
+Educators are allowed, in the context of a tournament, to create Gamification Badges: they can be only added from an educator when he is creating a tournament, neither him nor eventual collaborator can modify them or add other ones any later .\\
 Badges are achievements that the Students can gain satisfying a requirement.\\
 When creating a badge, an educator has to give it a name, optionally an image, and to write a brief description of the requirement : these are the things that students will be able to see.\\
 To make the system be able to analyze the requirement and eventually assign the badge when it's necessary, the Educator has also to write it as a boolean condition built on parameters given by the System.\\
@@ -211,6 +217,7 @@ $[D3]$ User must know how to use GitHub in the proper way (push, pull, branch, e
 $[D4]$ Connection between systems must be reliable.\\
 $[D5]$ Test cases provided by educators must be correct.\\
 $[D6]$ GitHub works as expected.\\
+$[D7]$ The static Analysis tool works reliably\\
 
 \section{Specific Requirements}
 \subsection{External Interface Requirements}
@@ -244,21 +251,661 @@ The system offers to the users different services (see paragraph \textbf{2.2}) t
 $[FR1]$ The system allows Users (Students and Educators) to sign up.\\
 $[FR2]$ The system allows Users (Students and Educators) to login.\\
 $[FR3]$ The system allows Educators to create tournaments.\\
-$[FR4]$ The system allows Educators to set the maximum number of students per team in a tournament.\\
-$[FR5]$ The system allows Educators to set the number of battles in a tournament.\\
-$[FR6]$ The system allows Educators to create battles.\\
-$[FR7]$ The system allows Educators to choose whether and when the scores will be assigned in a totally automatic way or also through a manual verification by themselves\\
-$[FR8]$ The system allows Educators to create badges for a specific tournament.\\
-$[FR9]$ The system allows Educators to state the requirements for achieving a badge.\\
-$[FR10]$ The system allows Users to join a tournament.\\
-$[FR11]$ The system allows Users to see the ranking in tournaments and achieved badges of every signed up student in the system.\\
-$[FR12]$ The system allows Educators to see the list of the active tournaments they have created.\\
-$[FR13]$ The system allows Users to see the list of the active tournaments they have joined.\\
+$[FR4]$ The system allows Educators to set a deadline for subscribing to the tournament.\\
+$[FR5]$ The System allows Educators to set a list of programming languages that will be used in the tournament.\\
+$[FR6]$ The system allows Educators to invite other Educators as collaborators for a tournament\\
+$[FR7]$ The system allows Educators to set the number of battles in a tournament.\\
+$[FR8]$ The system allows Educators to create battles.\\
+$[FR9]$ The system allows Educators to set a deadline for the subscription to the battle.\\
+$[FR10$ The system allows Educators to set a deadline for the submission of the solutions of the battle.\\
+$[FR11]$ The System allows educators to choose which of the languages of the tournament will be used in each battle.\\
+$[FR12]$ The System allows Educators to upload the files with the text of the problem and test cases for the battle\\
+$[FR13]$ The system allows Educators to set the maximum number of students per team in a battle.\\
+$[FR14]$ The system allows Educators to choose whether and when the scores will be assigned in a totally automatic way or also through a manual verification by themselves\\
+$[FR15]$ The system allows Educators to create badges for a specific tournament.\\
+$[FR16]$ The system allows Educators to build the requirements for achieving a badge.\\
+$[FR17]$ The system allows Students to see what are the active badges in a tournament and what do they have to do to achieve them.\\
+$[FR18]$ The system allows Students to join a tournament.\\
+$[FR19]$ The system allows Students to invite other students to form teams for a battle\\
+$[FR20]$ The system allows Students to join a battle. \\
+$[FR21]$ The system allows Students to know about provisional scores of all students, updated for every solution submitted, for all the duration of a battle\\
+$[FR22]$ The system allows Educators to see the list of the active tournaments they have created.\\
+$[FR23]$ The system allows Students to see the list of the active tournaments they have joined.\\
+$[FR24]$ The system allows Users to see stats of any other account registered in the system\\
+$[FR25]$ The system allows Users to search for other accounts or tournaments on the search bar\\
+
+
+\subsubsection{Use Case Diagrams}
+\newpage
+
+\subsubsection{Use Cases}
+The following are the use cases that can happen within the system:
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC1] Registration }
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Registration \\
+        \hline
+        \textbf{Actor} & User \\
+        \hline
+        \textbf{Entry Condition} & 
+        The user has opened the application \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The user opens the application 
+            \item The user clicks on the button” Sign Up” 
+            \item The system shows the registration form 
+            \item The user inserts his email and a password 
+            \item The system sends a confirmation email to the user through an email provider 
+            \item The user confirms his email by clicking in the link received by email 
+            \item The system shows a form asking for the personal information, including the type of account the user wants to create (Student or Educator)
+            \item The user inserts the requested data 
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & Registration has been successful. The user’s data is stored in the system’s database. The user then will be able to login in the system by using their credentials.  \\
+        \hline
+        \textbf{Exception} & The user is already registered to the system. The system will send an notification message telling user that there is an account with that email. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC2] User Login}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & User Login \\
+        \hline
+        \textbf{Actor} & User \\
+        \hline
+        \textbf{Entry Condition} & 
+        The user has opened the application\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The user inserts his username and password in the form
+            \item The user clicks on the “Login” button
+            \item The system checks the credentials
+            \item The application shows the dashboard
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The user has access to the services  \\
+        \hline
+        \textbf{Exception} & The data inserted is not valid. The system returns to the entry condition. \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC3] Create Tournament}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Create Tournament \\
+        \hline
+        \textbf{Actor} & Educator \\
+        \hline
+        \textbf{Entry Condition} & The educator is logged into the platform \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The educator clicks on the button to create a tournament
+            \item The educator puts information about the tournament 
+            \item The educator creates badges \textbf{[UC7]}
+            \item The educator invites other educators to join the tournament as collaborators
+            \item The educator clicks on the “Confirm Creation” button
+            \item The application shows the tournament environment 
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The educator successfully created the tournament  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC4] Create Battle}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Battle\\
+        \hline
+        \textbf{Actor} & Educator, GitHub \\
+        \hline
+        \textbf{Entry Condition} & The educators logged into the platform, and selected the tournament in which they want to create a battle \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The educator clicks on “create battle” button
+            \item The educator specifies information about the battle (name, text information, subscription deadline, submission deadline, etc…)
+            \item The educator uploads the track of the problem and the test cases 
+            \item The educator clicks on the “confirm creation” button
+            \item The system creates the repo with the uploaded files
+            \item The system sends notification to users about the creation of the battle \textbf{[UC9]}
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The educator successfully created the battle  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC5] Join Battle}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Join Battle \\
+        \hline
+        \textbf{Actor} & Student, GitHub \\
+        \hline
+        \textbf{Entry Condition} & User logged into the application and is on the battle page;
+        The battle is open for registration \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+             \item The student clicks on the “join battle” button
+             \item The student sees all the information of the battle 
+             \item The student sends the invitations to other students and waits for acceptances/rejectings to form their team
+             \item Students clicks on “Confirm”
+         \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & Student/Team successfully joined the battle \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC6] Student Joins Tournament}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Student Joins Tournament \\
+        \hline
+        \textbf{Actor} & Student \\
+        \hline
+        \textbf{Entry Condition} & 
+        User logged into the application and is on the tournament page; The tournament is open for registration  \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The student clicks on the “Join Tournament” button 
+            \item The student sees all the information about the tournament
+            \item The student clicks on “Confirm Joining” button
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The student joined the tournament successfully  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC7] Create Badge}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Badge Creation \\
+        \hline
+        \textbf{Actor} & Educator \\
+        \hline
+        \textbf{Entry Condition} & The educators logged into the platform and started the creation of the tournament  \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The educator clicks on the “Create Badge” button
+            \item The educator chooses a title for the badge
+            \item The educator uploads an image for the badge
+            \item The educator writes the description of requirements for the badge
+            \item The educator builds the conditions with variables for the badge 
+            \item The educator clicks on the “confirm badge” button
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The educator successfully created a badge \\
+        \hline
+        \textbf{Exception} & The educator didn't build the conditions in step \textbf{5} correctly  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC8] Assigning Badge}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Assigning Badge \\
+        \hline
+        \textbf{Actor} & Student \\
+        \hline
+        \textbf{Entry Condition} & The educators have defined badges with associated rules and criteria; A battle or the tournament has ended\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The system verifies the fulfillment of conditions for achieving a badge
+            \item The system eventually awards the badge to the Student
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The student receives the badge \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC9] Notify Participants}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Notification System \\
+        \hline
+        \textbf{Actor} & User \\
+        \hline
+        \textbf{Entry Condition} & A significant event occurs within the CKB platform\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The system identifies a significant event
+            \item The system chooses the nature of the event
+            \item The system chooses the Users to whom the notification will be sent
+            \item The system generates notifications containing relevant information
+            \item The system sends out notifications
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & User receive the notification successfully \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC10] Automated Evaluation}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Automated Evaluation \\
+        \hline
+        \textbf{Actor} & Static Analysis Tool \\
+        \hline
+        \textbf{Entry Condition} & The student/team pushes a new commit to the main branch of their forked repository containing their code solution\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The CKB platform retrieves the latest source code from the Student/Team's repository related to the specific battle
+            \item The system sends code and test cases to the Static Analysis Tool 
+            \item The Static Analysis Tool analyzes the code 
+            \item The Static Analysis Tool sends back the results to the System
+            \item The system calculates a score
+            \item The system updates the battle score of the respective Team
+            \item The system notifies participants \textbf{[UC9]}
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The battle score is updated \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC11] Manual Evaluation}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Manual Evaluation \\
+        \hline
+        \textbf{Actor} & Educator \\
+        \hline
+        \textbf{Entry Condition} & The battle has ended and the solutions has been submitted, manual evaluation enabled\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The educator accesses the battle page
+            \item The educator selects the link of a solution he wants to evaluate
+            \item The educator evaluates the solution 
+            \item The educator inserts the score in the system (the sum of the maximum score assignable by the system and the one assignable by the Educator is 100)
+            \item The educator confirms the inserted scores
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & Final marks are calculated and published by the system  \\
+        \hline
+        \textbf{Exception} & 
+        \begin{itemize}[topsep=0pt, partopsep=0pt]
+            \item Invalid score assigned by the educator
+            \item Confirmation while one or more scores are missing
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC12] Creating Repository Fork}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Creating Fork \\
+        \hline
+        \textbf{Actor} & Student, GitHub \\
+        \hline
+        \textbf{Entry Condition} & Subscription deadline for the battle has expired\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The student accesses the battle page
+            \item The system shows to the User the link of the GitHub main repository for the battle
+            \item The student creates a branch for the repository  
+            \item The student sends the link of the branch to the system
+            \item The student clicks on “confirm”
+            \item The system checks that the link is valid
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & Student/team successfully registered their branch \\
+        \hline
+        \textbf{Exception} & Invalid link \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC13] Close Tournament}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Tournament Closure \\
+        \hline
+        \textbf{Actor} & Educator \\
+        \hline
+        \textbf{Entry Condition} & All battles have ended\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The educator clicks on “Close Tournament”
+            \item Students are notified that the tournament has ended \textbf{[UC9]}
+            \item The system shows final results in tournament homepage 
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The tournament is closed \\
+        \hline
+        \textbf{Exception} & Ongoing battle \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC14] Visit Profile}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Visit Profile \\
+        \hline
+        \textbf{Actor} & User \\
+        \hline
+        \textbf{Entry Condition} & User has logged into the system\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The user clicks on an account or searches it \textbf{[UC16]}
+            \item The system shows the account information to the user
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The user can see the requested profile \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC15] Joining Invitation}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Joining Invitation \\
+        \hline
+        \textbf{Actor} & User \\
+        \hline
+        \textbf{Entry Condition} & An user has received an invitation notification and has logged into the system\\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The user accesses the notifications section
+            \item The user clicks on the notification
+            \item The system shows the information about the invitation
+            \item The user accepts or declines the invitation
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The invitation has been accepted or declined \\
+        \hline
+        \textbf{Exception} & The invitation has been retired \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}
+ \renewcommand{\arraystretch}{1.5}
+    \centering
+    \raggedright\textbf{[UC16] Searching}
+    \begin{tabular}{|l|p{10cm}|}
+        \hline
+        \textbf{Name} & Searching \\
+        \hline
+        \textbf{Actor} & User \\
+        \hline
+        \textbf{Entry Condition} & User has logged into the system \\
+        \hline
+        \textbf{Event Flow} & 
+        \begin{enumerate}[align=left, topsep=0pt, partopsep=0pt]
+            \item The user clicks on the search bar 
+            \item The user digits a keyword
+            \item The system shows the results of the research
+            \item The user accepts or declines the invitation
+        \end{enumerate} \\
+        \hline
+        \textbf{Exit Condition} & The user can see the result of his research \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\subsubsection{Sequence Diagrams}
+
+
+\subsubsection{Requirements Mapping}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G1] EDUCATORS AND STUDENTS CAN SUBSCRIBE TO THE APPLICATION CREATING}} \\
+        \multicolumn{2}{|c|}{\textbf{THEIR PERSONAL ACCOUNT}}\\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR1]} The system allows Users (Students and Educators) to sign up.
+            \item \textbf{[FR2]} The system allows Users (Students and Educators) to login.
+        \end{itemize} &
+        \begin{itemize} [label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection. 
+            \item \textbf{[D4]} Connection between systems must be reliable.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G2] EDUCATORS CREATE TOURNAMENTS IN WHICH STUDENTS CAN COMPETE}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR3]} The system allows Educators to create tournaments.
+            \item \textbf{[FR4]} The system allows Educators to set a deadline for subscribing to the tournament.
+            \item \textbf{[FR5]} The System allows Educators to set a list of programming languages that will be used in the tournament.
+            \item \textbf{[FR6]} The system allows Educators to invite other Educators as collaborators for a tournament
+            \item \textbf{[FR7]} The system allows Educators to set the number of battles in a tournament.
+            \item \textbf{[FR22]} The system allows Educators to see the list of the active tournaments they have created.
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D4]} Connection between systems must be reliable.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G3] STUDENTS SUBSCRIBE TO THE TOURNAMENTS}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR18]} The system allows Students to join a tournament.
+            \item \textbf{[FR23]} The system allows Students to see the list of the active tournaments they have joined.
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D4]} Connection between systems must be reliable.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G4] EDUCATORS CREATE BATTLES IN THE CONTEXT OF A TOURNAMENT,}} \\
+        \multicolumn{2}{|c|}{\textbf{CONSISTING IN CODING CHALLENGES FOR STUDENTS}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR8]} The system allows Educators to create battles.
+            \item \textbf{[FR9]} The system allows Educators to set a deadline for the subscription to the battle.
+            \item \textbf{[FR10]} The system allows Educators to set a deadline for the submission of the solutions of the battle.
+            \item \textbf{[FR11]} The System allows educators to choose which of the languages of the tournament will be used in each battle.
+            \item \textbf{[FR12]} The System allows Educators to upload the files with the text of the problem and test cases for the battle
+            \item \textbf{[FR13]} The system allows Educators to set the maximum number of students per team in a battle.
+            \item \textbf{[FR14]} The system allows Educators to choose whether and when the scores will be assigned in a totally automatic way or also through a manual verification by themselves
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D4]} Connection between systems must be reliable.
+            \item \textbf{[D5]} Test cases provided by educators must be correct.
+            \item \textbf{[D6]} GitHub works as expected.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G5] STUDENTS COMPETE, IN TEAMS OR ON THEIR OWN, IN MANY BATTLES,}} \\
+        \multicolumn{2}{|c|}{\textbf{THE RESULTS OF WHICH WILL DETERMINE THE FINAL RANK OF THE TOURNAMENT}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR19]} The system allows Students to invite other students to form teams for a battle
+            \item \textbf{[FR20]} The system allows Students to join a battle.
+            \item \textbf{[FR21]} The system allows Students to know about provisional scores of all students, updated for every solution submitted, for all the duration of a battle.
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D2]} User must have a GitHub account.
+            \item \textbf{[D3]} User must know how to use GitHub in the proper way (push, pull, branch, etc.).
+            \item \textbf{[D4]} Connection between systems must be reliable.
+            \item \textbf{[D5]} Test cases provided by educators must be correct.
+            \item \textbf{[D6]} GitHub works as expected.
+            \item \textbf{[D7]} The static Analysis tool works reliably.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G6] EDUCATORS CREATE BADGES AND DEFINE REQUIREMENTS TO ACHIEVE THEM}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR15]} The system allows Educators to create badges for a specific tournament.
+            \item \textbf{[FR16]} The system allows Educators to build the requirements for achieving a badge.
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D4]} Connection between systems must be reliable.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G7] STUDENTS CAN REACH ACHIEVEMENTS}} \\
+        \multicolumn{2}{|c|}{\textbf{THAT PERMIT THEM TO GAIN BADGES FOR THEIR ACCOUNT}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR17]} The system allows Students to see what are the active badges in a tournament and what do they have to do to achieve them.
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D4]} Connection between systems must be reliable.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
+
+\begin{table}
+\begin{adjustwidth}{-1in}{-1in}
+ \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|p{9.5cm}|p{9.5cm}|}
+        \hline
+        \multicolumn{2}{|c|}{\textbf{[G8] USERS CAN VISIT THE ACCOUNT OF EACH OTHER AS PART OF A COMMUNITY,}} \\
+        \multicolumn{2}{|c|}{\textbf{THEIR STATS AND ACHIEVED BADGES ARE PUBLIC.}} \\
+        \hline
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[FR24]} The system allows Users to see stats of any other account registered in the system.
+            \item \textbf{[FR25]} The system allows Users to search for other accounts or tournaments on the search bar.
+        \end{itemize} &
+        \begin{itemize}[label={}, left=0pt, align=left, itemsep=5pt]
+            \item \textbf{[D1]} User must have an internet connection.
+            \item \textbf{[D4]} Connection between systems must be reliable.
+        \end{itemize} \\
+        \hline
+    \end{tabular}
+\end{adjustwidth}
+\end{table}
 
 \newpage
 
 \section{Alloy}
 \includegraphics[scale = 0.7]{Untitled-1.pdf}
+
 
 \section{Effort Spent}
 \begin{center}
@@ -321,4 +968,6 @@ $[FR13]$ The system allows Users to see the list of the active tournaments they 
 \end{center}
 
 \section{References}
+
+
 \end{document}
